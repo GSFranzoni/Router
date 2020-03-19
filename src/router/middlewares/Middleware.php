@@ -2,8 +2,11 @@
 
 namespace Middleware;
 
+use Router\Request;
+use Router\Response;
+
 abstract class Middleware {
-    abstract function handle(&$request, &$response, $next);
+    abstract function handle(Request &$request, Response &$response, $next);
 }
 
 ?>
