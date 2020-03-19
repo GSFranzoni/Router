@@ -12,8 +12,12 @@ class Request {
         return file_get_contents('php://input');
     }
 
-    public function getQuery(): array {
+    public function getQueries(): array {
         return $_GET;
+    }
+
+    public function getQuery($key): string {
+        return $_GET[$key];
     }
 
     public function getUri() {
