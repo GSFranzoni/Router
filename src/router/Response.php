@@ -4,10 +4,11 @@ namespace Router;
 
 class Response {
 
-    public $body;
+    public $body, $headers;
 
     public function withHeader($key, $value) {
         header("$key: $value");
+        $this->headers[$key] = $value;
         return $this;
     }
 
@@ -22,7 +23,7 @@ class Response {
     }
 
     public function getHeader($key) {
-        return getallheaders()[$key];
+        return $this->headers[$key];
     }
 
     public function send() {
@@ -31,7 +32,7 @@ class Response {
                 print json_encode($this->body);
             break;
             default:
-                print json_encode($this->body);
+                print $this->body;
             break;
         }
     }

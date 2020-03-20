@@ -66,7 +66,7 @@ class Router {
 
     public function callRoute($route, $args) {
         if($this->executeMiddlewares($route)) {
-            call_user_func_array($route->getCallback(), [$this->request, $this->response, $args]);
+            call_user_func_array($route->getCallback(), [&$this->request, &$this->response, $args]);
         }
         $this->response->send();
     }

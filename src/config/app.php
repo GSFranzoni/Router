@@ -23,7 +23,7 @@ use Router\Router;
 $router = new Router();
 
 $router->get('/home', TestController::class. '::home')->add(AuthMiddleware::class);
-$router->get('/files/{id}', TestController::class. '::file');
+$router->get('/files/{id}', TestController::class. '::file')->add(AuthMiddleware::class);
 
 $router->run();
 

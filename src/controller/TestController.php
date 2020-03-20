@@ -2,18 +2,17 @@
 
 namespace Controller;
 
-use Router\Response;
+use Router\Response as Response;
+use Router\Request as Request;
 
 class TestController {
 
-    public static function file(&$request, &$response, $args) {
-        Response::withHeader('Content-Type', 'application/pdf');
-        readfile(FILES_PATH. '/1b1c77224a1878af.pdf');
+    public static function file(Request &$request, Response &$response, $args) {
+        $response->withHeader('Content-Type', 'image/png')->write(file_get_contents(FILES_PATH. '/red-cross.png'));
     }
 
-    public static function home(&$request, &$response, $args) {
-        Response::withHeader('Content-Type', 'application/json')::withStatus(200);
-        return json_encode(array('id' => 1));
+    public static function home(Request &$request, Response &$response, $args) {
+        $response->withHeader('Content-Type', 'application/json')->withStatus(200)->write(array('message' => "Hello, ". $request->getQuery('name'). "!"));
     }
 
 }
