@@ -4,6 +4,7 @@ define('CONTROLLER_PATH', realpath(dirname(__FILE__). '/../controller'));
 define('ROUTER_PATH', realpath(dirname(__FILE__). '/../router'));
 define('FILES_PATH', realpath(dirname(__FILE__). '/../files'));
 define('MIDDLEWARE_PATH', realpath(dirname(__FILE__). '/../router/middlewares'));
+define('JWT_PATH', realpath(dirname(__FILE__). '/../jwt'));
 
 require_once(realpath(CONTROLLER_PATH. '/NotFoundController.php'));
 require_once(realpath(CONTROLLER_PATH. '/TestController.php'));
@@ -15,6 +16,8 @@ require_once(realpath(ROUTER_PATH. '/Router.php'));
 
 require_once(realpath(MIDDLEWARE_PATH. '/Middleware.php'));
 require_once(realpath(MIDDLEWARE_PATH. '/AuthMiddleware.php'));
+
+require_once(realpath(JWT_PATH. '/JWT.php'));
 
 use Controller\TestController;
 use Middleware\AuthMiddleware;
